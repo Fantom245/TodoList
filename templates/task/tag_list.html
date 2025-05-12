@@ -3,5 +3,7 @@
 {% block content %}
     {% for tag in tag_list %}
         {{ tag.name }}
+        <a href="{% url 'task:tag-update' tag.pk %}">Update</a>
+        <a href="{% url 'task:tag-delete' tag.pk %}">Delete</a>
     {% endfor %}
 {% endblock %}
