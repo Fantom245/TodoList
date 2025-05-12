@@ -3,11 +3,22 @@
 {% block content %}
     <h1>
         Tags
-        <a href="{% url 'task:tag-create' %}">Add</a>
+        <a href="{% url 'task:tag-create' %}" class="btn btn-primary link-to-page">
+            Add
+        </a>
     </h1>
-    {% for tag in tag_list %}
-        {{ tag.name }}
-        <a href="{% url 'task:tag-update' tag.pk %}">Update</a>
-        <a href="{% url 'task:tag-delete' tag.pk %}">Delete</a>
-    {% endfor %}
+    <table class="table">
+        <tr>
+            <th>NAME</th>
+            <th>Update</th>
+            <th>Delete</th>
+        </tr>
+        {% for tag in tag_list %}
+            <tr>
+                <td><b>{{ tag.name }}</b></td>
+                <td><a href="{% url 'task:tag-update' tag.pk %}" class="btn btn-sm btn-secondary text-decoration-none">Update</a></td>
+                <td><a href="{% url 'task:tag-delete' tag.pk %}" class="btn btn-sm btn-secondary text-decoration-none">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>    
 {% endblock %}

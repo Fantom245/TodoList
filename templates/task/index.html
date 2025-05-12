@@ -4,28 +4,29 @@
 {% block content %}
     <div>
         <h1>
-            Todo list
-            <a href="{% url 'task:task-create' %}">Add</a>
+            TODO list
+            <a href="{% url 'task:task-create' %}" class="btn btn-primary link-to-page">Add task</a>
         </h1>
     </div>
-    {% for task in tasks %}
-        <h2>
-            {{ task.content }}
-            {% if task.is_done %}
-                Done
-                <a href="{% url 'task:task-toggle-done' task.pk %}">Undo</a>
-            {% else %}
-                Not done
-                <a href="{% url 'task:task-toggle-done' task.pk %}">Completed</a>
-            {% endif %}
-        </h2>
-        <p>Created_at {{ task.time_create }}, Deadline: {{ task.deadline }}</p>
-        Tags:
-        {% for tag in tags %}
-            {{ tag.name }}
+    <ul>
+        {% for task in tasks %}
+            <h2>
+                {{ task.content }}
+                {% if task.is_done %}
+                    <b style="color: green;">Done</b>
+                    <a href="{% url 'task:task-toggle-done' task.pk %}" class="btn btn-secondary">Undo</a>
+                {% else %}
+                    <b style="color: red;">Not done</b>
+                    <a href="{% url 'task:task-toggle-done' task.pk %}" class="btn btn-primary">Completed</a>
+                {% endif %}
+            </h2>
+            <p>Created_at {{ task.time_create }}, <b style="color: crimson;">Deadline: {{ task.deadline }}</b></p>
+            <b style="color: gray;">Tags:</b>
+            {% for tag in tags %}
+                <b style="color: gray">{{ tag.name }}</b>
+            {% endfor %}
+            <b><a href="{% url 'task:task-update' task.pk %}" class="text-decoration-none me-1">Update</a></b>
+            <b><a href="{% url 'task:task-delete' task.pk %}" class="text-decoration-none">Delete</a></b>
         {% endfor %}
-        <a href="{% url 'task:task-update' task.pk %}">Update</a>
-        <a href="{% url 'task:task-delete' task.pk %}">Delete</a>
-        
-    {% endfor %}
+    </ul>
 {% endblock %}
