@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <h1>
+        Tags
+        <a href="{% url 'task:tag-create' %}">Add</a>
+    </h1>
     {% for tag in tag_list %}
         {{ tag.name }}
         <a href="{% url 'task:tag-update' tag.pk %}">Update</a>
