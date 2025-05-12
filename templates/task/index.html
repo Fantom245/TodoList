@@ -5,7 +5,7 @@
     <div>
         <h1>
             Todo list
-            <button>Add task</button>
+            <a href="{% url 'task:task-create' %}">Add</a>
         </h1>
     </div>
     {% for task in tasks %}
@@ -13,19 +13,19 @@
             {{ task.content }}
             {% if task.is_done %}
                 Done
-                <button>Undo</button>
+                <a href="{% url 'task:task-toggle-done' task.pk %}">Undo</a>
             {% else %}
                 Not done
-                <button>Completed</button>
+                <a href="{% url 'task:task-toggle-done' task.pk %}">Completed</a>
             {% endif %}
         </h2>
         <p>Created_at {{ task.time_create }}, Deadline: {{ task.deadline }}</p>
+        Tags:
         {% for tag in tags %}
-            <p>
-                Tags {{ tag.name }}
-                <a href="#">Update</a>
-                <a href="#">Delete</a>
-            </p>
+            {{ tag.name }}
         {% endfor %}
+        <a href="{% url 'task:task-update' task.pk %}">Update</a>
+        <a href="{% url 'task:task-delete' task.pk %}">Delete</a>
+        
     {% endfor %}
 {% endblock %}
