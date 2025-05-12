@@ -2,6 +2,30 @@
 
 
 {% block content %}
-    {{ task.content }}
-    {{ tag.name }}
+    <div>
+        <h1>
+            Todo list
+            <button>Add task</button>
+        </h1>
+    </div>
+    {% for task in tasks %}
+        <h2>
+            {{ task.content }}
+            {% if task.is_done %}
+                Done
+                <button>Undo</button>
+            {% else %}
+                Not done
+                <button>Completed</button>
+            {% endif %}
+        </h2>
+        <p>Created_at {{ task.time_create }}, Deadline: {{ task.deadline }}</p>
+        {% for tag in tags %}
+            <p>
+                Tags {{ tag.name }}
+                <a href="#">Update</a>
+                <a href="#">Delete</a>
+            </p>
+        {% endfor %}
+    {% endfor %}
 {% endblock %}
