@@ -12,7 +12,7 @@ A simple web-based Todo List application built with Python and Flask. This app a
 ## 🛠️ Technologies Used
 
 - Python 3
-- Flask
+- Django
 - HTML/CSS (Bootstrap)
 - SQLite (or any built-in database)
 
@@ -21,13 +21,13 @@ A simple web-based Todo List application built with Python and Flask. This app a
 1. Clone the project repository:
 
     ```bash
-    git clone https://github.com/Fantom245/IT_job_manager.git
+    git clone https://github.com/Fantom245/TodoList.git
     ```
 
 2. Navigate to the project directory:
 
     ```bash
-    cd IT_job_manager
+    cd TodoList
     ```
 
 3. Install the dependencies:
